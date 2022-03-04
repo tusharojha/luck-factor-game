@@ -10,6 +10,7 @@ type Action = {
   payload?: any
 }
 
+// Initial state storing the chosen number and the random grid to be shuffled.
 const initialState: State = {
   chosenNumber: 0,
   randomGrid: [1, 2, 3, 4, 5, 6, 7, 8, 9]

@@ -6,6 +6,7 @@ import TilesScreen from './screens/TilesScreen'
 import configureStore from './redux/store'
 import { Provider } from 'react-redux'
 
+// Created a stack navigator & redux store.
 const store = configureStore()
 const Stack = createNativeStackNavigator();
 

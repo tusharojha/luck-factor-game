@@ -1,11 +1,12 @@
 import { CREATE_RANDOM_GRID, SET_CHOSEN_VALUE } from '../types'
 
+// Set user's chosen value (1 to 9).
 export const setChosenValue = (value: number) => ({
   type: SET_CHOSEN_VALUE,
   payload: value,
 })
 
-
+// Generates a randomly shuffled array ranging from 1 to 9.  
 export const createRandomGrid = () => {
 
   const shuffle = (array: number[]) => {

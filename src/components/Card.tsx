@@ -15,14 +15,21 @@ type CardProps = {
 const Card: React.FC<CardProps> = (props) => {
   const { cardNumber, width, disabled, userWon, onClick } = props
   const { chosenNumber } = useSelector((state: any) => state.home)
+
+  // isFlipped represents if a card is already tapped / oppened.
   const [isFlipped, setIsFlipped] = useState(false)
 
   const openCard = () => {
     if (!isFlipped && !disabled) {
+      // Mark the card as flipped.
       setIsFlipped(true)
+
+      // Decrement the attempts left by 1.
       onClick()
+
+      // User wins when the chosenNumber eqauls to the current card number.
       if (chosenNumber == cardNumber) {
-        // User Won.
+        // Invoking prop method to show the alert, saying Congratulations message.
         userWon()
       }
     }
@@ -38,7 +45,6 @@ const Card: React.FC<CardProps> = (props) => {
 }
 
 const styles = StyleSheet.create({
-
   container: {
     display: 'flex',
     justifyContent: 'center',

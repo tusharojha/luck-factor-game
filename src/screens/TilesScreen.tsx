@@ -7,26 +7,29 @@ import { MAX_ATTEMPTS } from "../constants"
 import { createRandomGrid } from "../redux/actions"
 import { ScreenProps } from "./commons"
 
+// DeviceWidth calculated from Dimensions to show the card in the grid format.
 const DeviceWidth = Dimensions.get('window').width
 
 const TilesScreen: React.FC<ScreenProps> = (props) => {
 
   const { navigation } = props
-  const { chosenNumber, randomGrid } = useSelector((state: any) => state.home)
+  const { randomGrid } = useSelector((state: any) => state.home)
   const [attemptsLeft, setAttemptsLeft] = useState(MAX_ATTEMPTS)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
+    // Dispatches the action to create a random array from 1 to N (grid).
     dispatch(createRandomGrid())
   }, [])
 
   useEffect(() => {
     if (attemptsLeft == 0) {
-      // User Lost.
+      // User Loses when attemptsLeft is 0.
       Alert.alert('You lost!', 'Better luck next time.', [{ text: 'OK', onPress: () => { navigation.navigate('HomeScreen') } }])
       return;
     }
+    // Updating the toolbar title to show attempts left.
     navigation.setOptions({ headerTitle: `Attempts Left: ${attemptsLeft}` })
   }, [attemptsLeft])
 
@@ -34,9 +37,15 @@ const TilesScreen: React.FC<ScreenProps> = (props) => {
     <Text style={tw`flex flex-row items-center text-8 my-4 mx-2 text-black`}> Flip a tile </Text>
     <View style={tw`flex flex-row flex-wrap justify-between mx-2 mt-4`}>
       {randomGrid.map((cardNumber: number) =>
-        <Card userWon={() =>
-          Alert.alert('Congratulations, You won!', `It took just ${MAX_ATTEMPTS - attemptsLeft + 1} attempt${attemptsLeft < (MAX_ATTEMPTS - 1) ? 's' : ''}.`, [{ text: 'OK', onPress: () => { navigation.navigate('HomeScreen') } }])} onClick={() =>
-            setAttemptsLeft(attemptsLeft - 1)} disabled={attemptsLeft == 0} attemptsLeft={attemptsLeft} cardNumber={cardNumber} width={DeviceWidth * 0.3} />
+        <Card
+          userWon={() =>
+            Alert.alert('Congratulations, You won!', `It took just ${MAX_ATTEMPTS - attemptsLeft + 1} attempt${attemptsLeft < (MAX_ATTEMPTS - 1) ? 's' : ''}.`, [{ text: 'OK', onPress: () => { navigation.navigate('HomeScreen') } }])}
+          onClick={() =>
+            setAttemptsLeft(attemptsLeft - 1)}
+          disabled={attemptsLeft == 0}
+          attemptsLeft={attemptsLeft}
+          cardNumber={cardNumber}
+          width={DeviceWidth * 0.3} />
       )}
     </View>
   </View>
