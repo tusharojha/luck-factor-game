@@ -17,6 +17,7 @@
     "react-native": "0.67.3",
     "react-native-safe-area-context": "^4.1.2",
     "react-native-screens": "^3.13.1",
+    "react-native-wheel-scrollview-picker": "^2.0.0",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "twrnc": "^3.0.2"

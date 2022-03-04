@@ -1,4 +1,4 @@
-import { CREATE_RANDOM_GRID, SET_CHOSEN_VALUE, SET_ATTEMPTS_LEFT } from '../types'
+import { CREATE_RANDOM_GRID, SET_CHOSEN_VALUE } from '../types'
 
 export const setChosenValue = (value: number) => ({
   type: SET_CHOSEN_VALUE,
@@ -30,8 +30,3 @@ export const createRandomGrid = () => {
 
   return { type: CREATE_RANDOM_GRID, payload: items }
 }
-
-export const setAttemptsLeft = (attemptsLeft: number) => ({
-  type: SET_ATTEMPTS_LEFT,
-  payload: attemptsLeft,
-})
