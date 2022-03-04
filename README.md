@@ -9,6 +9,8 @@ A simple lucky draw game. The players are can pick any number from the range (1 
 
 This is an Android as well as iOS game developed in __React Native__. 
 
+######  Check the Mobile App Screenshots [here](./screenshots/README.md).
+
 The project is developed using the following libraries and framework: 
 
 - __React Native__ for the cross platform mobile application support.
