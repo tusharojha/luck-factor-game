@@ -1,6 +1,6 @@
 ## LuckFactor
 
-The Ultimate Luck Test. 
+The Ultimate Luck Test Game. 
 
 
 ![ts](https://badgen.net/badge/Built%20With/TypeScript/blue)
